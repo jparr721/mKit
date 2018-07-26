@@ -96,3 +96,16 @@ class LinearRegression(object):
         for i in range(1, X):
             X_norm[i] = np_x[i] - mu(i) / std(i)
         return X_norm, mu, std
+
+    def normal_equation(self, X, y):
+        """
+        The normal equation allows you to calculate
+        the optimum value of theta in a single go
+        without needing to use gradient descent.
+        """
+        np_x = np.array(X)
+        np_y = np.array(y)
+
+        theta = np.linalg.inv((np_x * np_x.T)) * (np_x * np_y)
+
+        return theta
