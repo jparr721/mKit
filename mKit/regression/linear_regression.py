@@ -1,10 +1,10 @@
-import matplotlib.pyplot as plt
 import numpy as np
+from base import DataModel
 
 
-class LinearRegression(object):
+class LinearRegression(DataModel):
 
-    def __init__(self, X, y, iterations, alpha):
+    def __init__(self, X=[], y=[], iterations=50, alpha=0.01):
         self.X = X
         self.y = y
         self.iterations = iterations  # The number of iterations
@@ -15,30 +15,6 @@ class LinearRegression(object):
         etc that we pass through
         """
         self.features = []
-
-    def load(self, data_file, delimeter):
-        """
-        This function reads data into
-        an array to be manipulated
-        """
-        with open(data_file) as data:
-            for d in data:
-                for i in d.split(delimeter):
-                    self.features[i].append(i.rstrip())
-
-        return self.features
-
-    def plot_data(self, X, y, xlabel='X', ylabel='Y', title='X v. Y plot'):
-        """
-        This function plots the data points
-        x and y into a new figure.
-        """
-        plt.plot(X, y)
-        plt.xlabel(xlabel)
-        plt.ylabel(ylabel)
-        plt.title(title)
-
-        plt.show()
 
     def cost_function(self, X, y, theta):
         """
