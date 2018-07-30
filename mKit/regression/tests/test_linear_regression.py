@@ -26,6 +26,7 @@ def test_plot_data():
         lr.plot_data(X, y, 'X_VALS', 'Y_VALS', 'TEST_CHART')
     except Exception as e:
         print('Test failed it exception: {}'.format(e))
+        return
 
     print('pass')
 
@@ -35,15 +36,17 @@ def setup():
     features = lr.load('./data/test_data1.txt')
     return features
 
+
 def run_linear_regression():
     print('Plotting data\n')
     features = setup()
-    X = features[0]
-    y = features[1]
+    features.columns = ['Profits', 'CityPopulation']
+    X = features.Profits
+    y = features.CityPopulation
     m = len(y)
     iterations = 1500
     alpha = 0.01
-    theta = np.zeros((2, 1))  # Set the initial theta value
+    theta = np.zeros((m), dtype=int)  # Set the initial theta value
     lr = LinearRegression(X, y, iterations, alpha)
 
     lr.plot_data(X, y, 'Profits', 'City Population',
@@ -51,21 +54,23 @@ def run_linear_regression():
 
     print('Testing gradient descent algorithm...\n')
     # Add a column of ones to X
-    X[0] = np.ones(m, 1)
-    print('Current value of X: {}'.format(X))  # Just to double check...
+    # X.bias = np.ones((m, 1))
 
     print('Initial cost: {}'.format(lr.cost_function(X, y, theta)))
 
     # Run the gradient descent
     theta = lr.gradient_descent(X, y, theta, alpha, iterations)
 
-    print('Optimum theta found by fradient descent: {}'.format(theta))
+    print('Optimum theta found by gradient descent: {}'.format(theta))
 
     # Making some predictions now
-    prediction1 = [1, 3.5] * theta
+    prediction1 = np.array([1, 3.5]).T * theta
+    print(prediction1)
     print('For population = 35,000, we predict profit of: {}'
           .format(prediction1))
 
 
 if __name__ == '__main__':
     test_load_data()
+    test_plot_data()
+    run_linear_regression()

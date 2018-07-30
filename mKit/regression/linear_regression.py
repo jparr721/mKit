@@ -31,7 +31,7 @@ class LinearRegression(DataModel):
         np_theta = np.array(theta)
 
         hypothesis = np_theta * np_x.T
-        squared_error = (hypothesis - np_y) ^ 2
+        squared_error = (hypothesis - np_y)**2
         J = (1 / (2 * m)) * sum(squared_error)
 
         return J
@@ -50,13 +50,13 @@ class LinearRegression(DataModel):
         np_theta = np.array(theta)
 
         for i in range(1, num_iters):
-            delta = ((1 / m) * ((np_x * np_theta) - np_y) * X)
+            delta = ((1 / m) * ((np.dot(np_x, np_theta)).T - np_y) * X).T
 
             theta = theta - alpha * delta
 
             prev_costs.append(self.cost_function(X, y, theta))
 
-        return theta
+        return theta, prev_costs
 
     def feature_normalize(self, X):
         """
