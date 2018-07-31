@@ -30,7 +30,7 @@ class LinearRegression(DataModel):
         np_y = np.array(y)
         np_theta = np.array(theta)
 
-        hypothesis = np.dot(np_theta, np_x.T)
+        hypothesis = np_x.T.dot(np_theta)
         squared_error = (hypothesis - np_y)**2
         J = (1 / (2 * m)) * sum(squared_error)
 
