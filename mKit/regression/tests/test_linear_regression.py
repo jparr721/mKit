@@ -46,7 +46,7 @@ def run_linear_regression():
     m = len(y)
     iterations = 1500
     alpha = 0.01
-    theta = np.zeros((m), dtype=int)  # Set the initial theta value
+    theta = np.zeros(m)  # Set the initial theta value
     lr = LinearRegression(X, y, iterations, alpha)
 
     lr.plot_data(X, y, 'Profits', 'City Population',
@@ -59,15 +59,16 @@ def run_linear_regression():
     print('Initial cost: {}'.format(lr.cost_function(X, y, theta)))
 
     # Run the gradient descent
-    theta = lr.gradient_descent(X, y, theta, alpha, iterations)
+    theta, cost_history = lr.gradient_descent(X, y, theta, alpha, iterations)
 
     print('Optimum theta found by gradient descent: {}'.format(theta))
+    # print('Cost history: {}'.format(cost_history))
 
     # Making some predictions now
-    prediction1 = np.array([1, 3.5]).T * theta
-    print(prediction1)
-    print('For population = 35,000, we predict profit of: {}'
-          .format(prediction1))
+    # prediction1 = np.array([1, 3.5]).T * theta
+    # print(prediction1)
+    # print('For population = 35,000, we predict profit of: {}'
+    #       .format(prediction1))
 
 
 if __name__ == '__main__':

@@ -30,7 +30,7 @@ class LinearRegression(DataModel):
         np_y = np.array(y)
         np_theta = np.array(theta)
 
-        hypothesis = np_theta * np_x.T
+        hypothesis = np.dot(np_theta, np_x.T)
         squared_error = (hypothesis - np_y)**2
         J = (1 / (2 * m)) * sum(squared_error)
 
@@ -48,13 +48,17 @@ class LinearRegression(DataModel):
         np_x = np.array(X)
         np_y = np.array(y)
         np_theta = np.array(theta)
+        print('--------------------------------------------------------------')
+        print(np_x)
+        print(np_y)
+        print(np_theta)
+        print('--------------------------------------------------------------')
 
-        for i in range(1, num_iters):
-            delta = ((1 / m) * ((np.dot(np_x, np_theta)).T - np_y) * X).T
+        for i in range(num_iters):
+            error = np.dot(np_x, np_theta)
+            delta = (1/m) * np.dot(np.subtract(error, np_y), np_x)
 
-            theta = theta - alpha * delta
-
-            prev_costs.append(self.cost_function(X, y, theta))
+            theta = np_theta - alpha * delta
 
         return theta, prev_costs
 
