@@ -40,7 +40,6 @@ class SequentialBackwardSelection(object):
                                  random_state=self.random_state)
 
         dim = X_train.shape[1]
-        print('dim: {}'.format(dim))
         self.inidicies_ = tuple(range(dim))
         self.subsets_ = [self.inidicies_]
         score = self.calc_score(X_train,
