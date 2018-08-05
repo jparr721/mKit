@@ -12,7 +12,7 @@ def test_feature_importance_ranking():
                        'wine/wine.data', header=None)
     forest = RandomForestClassifier(n_estimators=500, random_state=1)
 
-    X, y = data.iloc[:, 0].values, data.iloc[:, 1].values
+    X, y = data.iloc[:, 1:].values, data.iloc[:, 0].values
 
     fir = FeatureImportanceRanking(df=data,
                                    classifier=forest,

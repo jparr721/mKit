@@ -19,7 +19,7 @@ def test_sbs():
                     'Flavanoids', 'Nonflavanoid phenols', 'Proanthocyanins',
                     'Color intensity', 'Hue', 'OD280/OD315 of diluted wines',
                     'Proline']
-    X, y = data.iloc[:, 1].values, data.iloc[:, 0].values
+    X, y = data.iloc[:, 1:].values, data.iloc[:, 0].values
 
     X_train, X_test, y_train, y_test = \
         train_test_split(X, y,
