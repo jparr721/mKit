@@ -39,6 +39,7 @@ class MultiLayerPerceptron(object):
     def __init__(self, n_hidden=30, l2=0., epochs=100,
                  eta=0.001, shuffle=True,
                  minibatch_size=1, seed=None):
+        self.random = np.random.RandomState(seed)
         self.n_hidden = n_hidden
         self.l2 = l2
         self.epochs = epochs
@@ -154,7 +155,7 @@ class MultiLayerPerceptron(object):
         """ Weight Initialization"""
 
         # Weights for input -> hidden
-        self.b_h = np.zeors(self.n_hidden)
+        self.b_h = np.zeros(self.n_hidden)
         # Create a random normal distribution for the weight matrix
         self.w_h = self.random.normal(loc=0.0, scale=0.1,
                                       size=(n_features, self.n_hidden))
@@ -164,7 +165,6 @@ class MultiLayerPerceptron(object):
         self.w_out = self.random.normal(loc=0.0, scale=0.1,
                                         size=(self.n_hidden, n_output))
 
-        epoch_strlen = len(str(self.epochs))
         self.eval_ = {'cost': [], 'train_acc': [], 'valid_acc': []}
 
         # Encoded y_train values
@@ -228,16 +228,16 @@ class MultiLayerPerceptron(object):
             y_valid_pred = self.predict(X_valid)
 
             train_acc = ((np.sum(y_train ==
-                          y_train_pred)).astype(np.float /
-                         X_train.shape[0]))
+                          y_train_pred)).astype(np.float) /
+                         X_train.shape[0])
 
             valid_acc = ((np.sum(y_valid ==
-                          y_valid_pred)).astype(np.float /
-                         X_valid.shape[0]))
+                          y_valid_pred)).astype(np.float) /
+                         X_valid.shape[0])
 
-            sys.stderr.write('{} | Cost: {}'
-                             ' | Train/Valid Acc.: {}'.format(
-                                 epoch_strlen, i+1, self.epochs,
+            sys.stderr.write('\n{}/{} | Cost: {}'
+                             ' | Train/Valid Acc.: {}%/{}%'.format(
+                                 i+1, self.epochs,
                                  cost,
                                  train_acc*100, valid_acc*100))
             sys.stderr.flush()
