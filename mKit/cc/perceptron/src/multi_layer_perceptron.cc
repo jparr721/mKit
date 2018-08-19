@@ -1,9 +1,9 @@
-#include <perceptron/multi_layer_perceptron.hpp>
+#include <perceptron/multi_layer_perceptron.h>
 
 namespace perceptron {
-std::vector<int> oneHot(std::vector<int>, y int n_classes) {
 
-}
+  np::ndarray MultiLayerPerceptron::onehot(np::ndarray y, int n_classes) {
 
+  }
 } // namespace perceptron
 
