@@ -1,9 +1,10 @@
+#include <iostream>
 #include <perceptron/multi_layer_perceptron.h>
 
 namespace perceptron {
-
-  np::ndarray MultiLayerPerceptron::onehot(np::ndarray y, int n_classes) {
-
+  int main(void) {
+    std::cout << "What's good" << std::endl;
+    return 0;
   }
 } // namespace perceptron
 

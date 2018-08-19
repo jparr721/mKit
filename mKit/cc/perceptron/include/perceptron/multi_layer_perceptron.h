@@ -4,9 +4,12 @@
 #include <boost/numeric/ublas/io.hpp>
 #include <boost/python/numpy.hpp>
 
+namespace p = boost::python;
+namespace np = boost::python::numpy;
 namespace perceptron {
   class MultiLayerPerceptron {
       public:
+
         int n_hidden, l2, eta, minibatch_size, seed;
         bool shuffle;
 
