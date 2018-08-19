@@ -19,7 +19,7 @@ For the C++ section compilation should be pretty straight forward. If you downlo
 
 `$ make install`
 
-Then you simply run the executable. If something breaks feel free to post an issue. Most things here will be pretty much only run on Arch Linux so I cannot guarantee backwards compatibility.
+Most things have only been tested on arch linux so I cnanot guarantee true cross compatibility.
 
 ### Potential Bugs
 Some of the boost libraries depend on the python modules to use them, as a result if it breaks, refer to [this](https://stackoverflow.com/questions/19810940/ubuntu-linking-boost-python-fatal-error-pyconfig-cannot-be-found)
