@@ -22,6 +22,6 @@ For the C++ section compilation should be pretty straight forward. If you downlo
 Most things have only been tested on arch linux so I cnanot guarantee true cross compatibility.
 
 ### Potential Bugs
-Some of the boost libraries depend on the python modules to use them, as a result if it breaks, refer to [this](https://stackoverflow.com/questions/19810940/ubuntu-linking-boost-python-fatal-error-pyconfig-cannot-be-found)
+Some of the boost libraries depend on the python modules to use them, if it breaks refer to [this](https://stackoverflow.com/questions/19810940/ubuntu-linking-boost-python-fatal-error-pyconfig-cannot-be-found)
 
 Happy hacking!
